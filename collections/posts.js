@@ -1,5 +1,10 @@
 Posts = new Meteor.Collection('posts');
 
+Posts.allow({
+    update: ownsDocument,
+    remove: ownsDocument
+});
+
 Meteor.methods({
     postInsert: function(postAttributes) {
         check(this.userId, String);
