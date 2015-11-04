@@ -2,5 +2,5 @@
 Errors = new Meteor.Collection(null);
 
 throwError = function(message) {
-    Error.insert({message: message})
+    Errors.insert({message: message})
 };
