@@ -2,6 +2,12 @@ Comments = new Meteor.Collection('comments');
 
 Meteor.methods({
     comment: function(commentAttributes) {
+        check(this.userId, String);
+        check(commentAttributes, {
+            postId: String,
+            body: String
+        });
+
         var user = Meteor.user();
         var post = Posts.findOne(commentAttributes.postId);
         // ensure the user is logged in
